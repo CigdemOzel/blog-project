@@ -19,7 +19,7 @@
       "type": "text"
     },
     "content": {
-      "type": "blocks",
+      "type": "text",
       "required": true
     },
     "image": {

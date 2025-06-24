@@ -385,7 +385,7 @@ export interface ApiBlogpostBlogpost extends Struct.CollectionTypeSchema {
   };
   attributes: {
     authorName: Schema.Attribute.String & Schema.Attribute.Required;
-    content: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    content: Schema.Attribute.Text & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

@@ -1,3 +1,7 @@
+import "./globals.css";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
+
 export const metadata = {
   title: "Gezi Blog Sayfası",
   description: "Dünyanın dört bir yanından gezi notları",
@@ -6,7 +10,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="tr">
-      <body>{children}</body>
+      <body>
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
