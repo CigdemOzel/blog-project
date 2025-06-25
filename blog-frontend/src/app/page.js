@@ -2,7 +2,9 @@ import Link from "next/link";
 import "./globals.css";
 
 export default async function HomePage() {
-  const res = await fetch("http://localhost:1337/api/blogposts?populate=*");
+  const res = await fetch(
+    "http://localhost:1337/api/blogposts?sort=createdAt:desc&populate=*"
+  );
   const response = await res.json();
 
   const blogPosts = response.data;
@@ -15,9 +17,12 @@ export default async function HomePage() {
             post;
 
           return (
-            <div className="max-w-lg mx-auto ">
-              <div className="bg-white shadow-md border items-start border-gray-200 rounded-lg max-w-sm mb-5 transition-transform transform hover:-translate-y-1 hover:shadow-xl">
-                <Link href={`/blog/${post.documentId}`} key={post.id}>
+            <div key={post.id} className="max-w-lg mx-auto ">
+              <div
+                key={post.id}
+                className="bg-white shadow-md border items-start border-gray-200 rounded-lg max-w-sm mb-5 transition-transform transform hover:-translate-y-1 hover:shadow-xl"
+              >
+                <Link href={`/blog/${post.documentId}`}>
                   <div className="rounded-t-lg ">
                     {image && (
                       <img

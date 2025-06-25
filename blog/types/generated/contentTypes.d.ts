@@ -401,7 +401,7 @@ export interface ApiBlogpostBlogpost extends Struct.CollectionTypeSchema {
       'api::blogpost.blogpost'
     > &
       Schema.Attribute.Private;
-    publishDate: Schema.Attribute.Date & Schema.Attribute.Required;
+    publishDate: Schema.Attribute.Date;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;

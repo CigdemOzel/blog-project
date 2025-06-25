@@ -30,12 +30,22 @@ export default async function BlogDetailPage({ params }) {
         />
       )}
 
-      <div className="space-y-4 mb-10">
-        {content?.map((block, i) => (
-          <p key={i} className="leading-relaxed">
-            {block.children.map((child) => child.text).join("")}
-          </p>
-        ))}
+      <div className="mb-10">
+        {Array.isArray(content) ? (
+          content.map((block, i) => (
+            <p key={i} className="mb-4 leading-relaxed">
+              {block.children.map((child) => child.text).join("")}
+            </p>
+          ))
+        ) : typeof content === "string" ? (
+          content.split("\n").map((paragraph, i) => (
+            <p key={i} className="mb-4 leading-relaxed">
+              {paragraph}
+            </p>
+          ))
+        ) : (
+          <p className="text-gray-500 italic">İçerik mevcut değil.</p>
+        )}
       </div>
 
       {gallery && gallery.length > 0 && (

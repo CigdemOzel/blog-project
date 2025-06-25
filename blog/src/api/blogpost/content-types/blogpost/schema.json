@@ -34,7 +34,7 @@
     },
     "publishDate": {
       "type": "date",
-      "required": true
+      "required": false
     },
     "gallery": {
       "type": "media",
