@@ -23,6 +23,7 @@ export default function BlogYazPage() {
     content: "",
     authorName: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const imageInputRef = useRef(null);
   const galleryInputRef = useRef(null);
@@ -49,6 +50,7 @@ export default function BlogYazPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     try {
       let imageId = null;
@@ -91,6 +93,8 @@ export default function BlogYazPage() {
       }
     } catch (err) {
       toast.error("Sunucuya bağlanılamadı!");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -156,8 +160,9 @@ export default function BlogYazPage() {
         <button
           type="submit"
           className="bg-orange-800 text-white px-4 py-2 rounded hover:bg-amber-400 font-bold"
+          disabled={isSubmitting}
         >
-          Gönder
+          {isSubmitting ? "Yükleniyor..." : "Gönder"}
         </button>
       </form>
     </main>
