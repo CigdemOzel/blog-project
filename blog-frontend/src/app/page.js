@@ -15,6 +15,7 @@ export default function HomePage() {
           `${process.env.NEXT_PUBLIC_API_URL}/api/blogposts`
         );
         const response = await res.json();
+        console.log("API'den gelen veri:", response);
 
         const cleanedData = (response.data || []).filter(
           (post) =>
