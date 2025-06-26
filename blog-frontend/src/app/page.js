@@ -12,7 +12,7 @@ export default function HomePage() {
     const fetchBlogs = async () => {
       try {
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/blogposts?populate=*`
+          `${process.env.NEXT_PUBLIC_API_URL}/api/blogposts?populate=*&sort=publishDate:desc`
         );
         const response = await res.json();
         console.log("API'den gelen veri:", response);
