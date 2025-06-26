@@ -56,10 +56,10 @@ export default function HomePage() {
               <div className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5 transition-transform transform hover:-translate-y-1 hover:shadow-xl">
                 <Link href={`/blog/${documentId}`}>
                   <div className="rounded-t-lg">
-                    {image && (
+                    {image?.url && (
                       <img
                         className="rounded-lg"
-                        src={typeof image === "string" ? image : image?.url}
+                        src={`${process.env.NEXT_PUBLIC_API_URL}${image.url}`}
                         alt={title}
                       />
                     )}
