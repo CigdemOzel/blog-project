@@ -2,8 +2,8 @@ import imageCompression from "browser-image-compression";
 
 const compressImage = async (file) => {
   const options = {
-    maxSizeMB: 1,
-    maxWidthOrHeight: 800,
+    maxSizeMB: 0.5,
+    maxWidthOrHeight: 1024,
     useWebWorker: true,
   };
 
@@ -32,12 +32,20 @@ export const uploadSingleFile = async (file) => {
 };
 
 export const uploadMultipleFiles = async (files) => {
-  const compressedFiles = await Promise.all(
-    files.map((file) => compressImage(file))
-  );
-
   const formData = new FormData();
-  compressedFiles.forEach((file) => formData.append("files", file));
+
+  const options = {
+    maxSizeMB: 0.5,
+    maxWidthOrHeight: 1024,
+    useWebWorker: true,
+  };
+
+  for (const file of files) {
+    console.log("Orijinal boyut:", file.size);
+    const compressed = await imageCompression(file, options);
+    console.log("Sıkıştırılmış boyut:", compressed.size);
+    formData.append("files", compressed);
+  }
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/upload`, {
     method: "POST",
