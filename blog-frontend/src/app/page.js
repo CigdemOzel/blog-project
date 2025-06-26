@@ -50,6 +50,7 @@ export default function HomePage() {
             authorName = "Anonim",
             documentId = "",
           } = post;
+          console.log("image verisi:", image);
 
           return (
             <div key={id} className="max-w-lg mx-auto">
