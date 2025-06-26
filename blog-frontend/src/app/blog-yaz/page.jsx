@@ -72,11 +72,14 @@ export default function BlogYazPage() {
 
       console.log("Gönderilen veri:", payload);
 
-      const blogRes = await fetch("http://localhost:1337/api/blogposts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ data: payload }),
-      });
+      const blogRes = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/blogposts`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ data: payload }),
+        }
+      );
 
       const result = await blogRes.json();
 
