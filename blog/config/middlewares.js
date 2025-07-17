@@ -1,15 +1,16 @@
 module.exports = ({ env }) => [
   "strapi::errors",
-  "strapi::security",
   {
     name: "strapi::cors",
     config: {
+      enabled: true,
       origin: ["https://blog-project-bice-iota.vercel.app"],
       headers: "*",
       methods: ["GET", "POST", "PUT", "DELETE"],
       credentials: true,
     },
   },
+  "strapi::security",
   "strapi::poweredBy",
   "strapi::logger",
   "strapi::query",
